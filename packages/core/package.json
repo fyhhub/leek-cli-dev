@@ -21,5 +21,6 @@
   },
   "dependencies": {
     "@leek-cli-dev/utils": "^0.0.2"
-  }
+  },
+  "gitHead": "efb676b415b4b57e4d9d7b12f6cb1a12375bf0b6"
 }
