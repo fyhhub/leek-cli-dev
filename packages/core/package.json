@@ -1,6 +1,6 @@
 {
   "name": "@leek-cli-dev/core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "core",
   "author": "范义辉 <fanyihui@tuhu.cn>",
   "homepage": "",
@@ -21,7 +21,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@leek-cli-dev/utils": "^0.0.4"
+    "@leek-cli-dev/utils": "^0.0.5"
   },
   "gitHead": "134d7402138dd259f8e7a30c5e5ece3e2d08087c"
 }
