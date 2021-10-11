@@ -6,6 +6,9 @@
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
+  "bin": {
+    "leek": "bin/index.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -21,7 +24,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@leek-cli-dev/utils": "^0.0.5"
+    "@leek-cli-dev/utils": "file:../../utils/utils",
+    "import-local": "^3.0.3",
+    "npmlog": "^5.0.1",
+    "yargs": "^17.2.1"
   },
   "gitHead": "134d7402138dd259f8e7a30c5e5ece3e2d08087c"
 }

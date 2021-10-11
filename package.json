@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "lerna list"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@leek-cli-dev/core": "0.0.5",
     "lerna": "^4.0.0"
-  }
+  },
+  "dependencies": {}
 }
