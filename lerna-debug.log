@@ -1,9 +1,18 @@
-40 error Error: Command failed with exit code 1: git commit -m v1.0.0
-40 error 位于分支 master
-40 error 您的分支与上游分支 'origin/master' 一致。
-40 error
-40 error 无文件要提交，干净的工作区
-40 error     at makeError (/Users/yuangong/Desktop/code/web架构课/leek-cli-dev/node_modules/execa/lib/error.js:60:11)
-40 error     at handlePromise (/Users/yuangong/Desktop/code/web架构课/leek-cli-dev/node_modules/execa/index.js:118:26)
-40 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
-40 error     at async Promise.all (index 0)
+0 silly argv {
+0 silly argv   _: [ 'create' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'lerna',
+0 silly argv   name: '@leek-cli-dev/init'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/yuangong/Desktop/code/web架构课/leek-cli-dev
+3 error Error: canceled
+3 error     at Interface.<anonymous> (/Users/yuangong/Desktop/code/web架构课/leek-cli-dev/node_modules/read/lib/read.js:66:13)
+3 error     at Interface.emit (events.js:315:20)
+3 error     at Interface._ttyWrite (readline.js:873:16)
+3 error     at ReadStream.onkeypress (readline.js:213:10)
+3 error     at ReadStream.emit (events.js:315:20)
+3 error     at emitKeys (internal/readline/utils.js:335:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (readline.js:1140:36)
+3 error     at ReadStream.emit (events.js:315:20)

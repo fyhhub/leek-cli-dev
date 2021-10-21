@@ -25,9 +25,19 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
+    "@leek-cli-dev/exec": "file:../../core/exec",
+    "@leek-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@leek-cli-dev/log": "file:../../utils/log",
     "@leek-cli-dev/utils": "file:../../utils/utils",
+    "@leek-cli-dev/init": "file:../../commands/init",
+    "colors": "^1.4.0",
+    "commander": "^6.2.1",
+    "dotenv": "^10.0.0",
     "import-local": "^3.0.3",
-    "npmlog": "^5.0.1",
+    "path-exists": "^4.0.0",
+    "root-check": "1.0.0",
+    "semver": "^7.3.5",
+    "user-home": "^2.0.0",
     "yargs": "^17.2.1"
   },
   "gitHead": "134d7402138dd259f8e7a30c5e5ece3e2d08087c"

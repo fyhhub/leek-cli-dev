@@ -1,0 +1,34 @@
+{
+  "name": "@leek-cli-dev/package",
+  "version": "1.0.2",
+  "description": "> TODO: description",
+  "author": "范义辉 <fanyihui@tuhu.cn>",
+  "homepage": "https://github.com/fyhhub/leek-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyhhub/leek-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/fyhhub/leek-cli-dev/issues"
+  },
+  "dependencies": {
+    "@leek-cli-dev/utils": "file:../../utils/utils",
+    "@leek-cli-dev/format-path": "file:../../utils/format-path",
+    "pkg-dir": "^5.0.0"
+  }
+}
