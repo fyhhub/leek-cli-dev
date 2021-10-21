@@ -2,6 +2,8 @@ const { isObject } = require('@leek-cli-dev/utils')
 const formatPath = require('@leek-cli-dev/format-path')
 const pkgDir = require('pkg-dir')
 const path = require('path')
+const npminstall = require('npminstall')
+const { getDefaultRegistry } = require('@leek-cli-dev/get-npm-info')
 class Package {
   constructor(options) {
     if (!options) {
@@ -13,8 +15,8 @@ class Package {
     console.log('package');
     // package路径
     this.targetPath = options.targetPath
-    // package 存储路径
-    // this.storePath = options.storePath
+    // package 缓存路径
+    this.storeDir = options.storeDir
     // package名称
     this.packageName = options.packageName
     // package版本
@@ -26,7 +28,17 @@ class Package {
   }
 
   install() {
-
+    npminstall({
+      root: this.targetPath,
+      storeDir: this.storeDir,
+      registry: getDefaultRegistry(),
+      pkgs: [
+        {
+          name: this.packageName,
+          version: this.packageVersion || '^1.0.0'
+        }
+      ]
+    })
   }
 
   update() {

@@ -45,5 +45,6 @@ async function getNpmSemVersion(baseVersion, npmName, registry) {
 module.exports = {
   getNpmInfo,
   getNpmVersions,
-  getNpmSemVersion
+  getNpmSemVersion,
+  getDefaultRegistry
 };

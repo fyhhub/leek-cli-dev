@@ -2,7 +2,7 @@
   "name": "@leek-cli-dev/package",
   "version": "1.0.2",
   "description": "> TODO: description",
-  "author": "范义辉 <fanyihui@tuhu.cn>",
+  "author": "范义辉 <1131153523@qq.com>",
   "homepage": "https://github.com/fyhhub/leek-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -27,8 +27,10 @@
     "url": "https://github.com/fyhhub/leek-cli-dev/issues"
   },
   "dependencies": {
-    "@leek-cli-dev/utils": "file:../../utils/utils",
     "@leek-cli-dev/format-path": "file:../../utils/format-path",
+    "@leek-cli-dev/utils": "file:../../utils/utils",
+    "@leek-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "npminstall": "^4.10.0",
     "pkg-dir": "^5.0.0"
   }
 }
