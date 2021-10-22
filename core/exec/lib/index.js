@@ -3,7 +3,7 @@ const log = require('@leek-cli-dev/log')
 const path = require('path')
 
 const SETTINGS = {
-  init: '@leek-cli-dev/init'
+  init: '@leek-cli-dev/core'
 }
 const CACHE_DIR = 'dependencies'
 function exec() {
