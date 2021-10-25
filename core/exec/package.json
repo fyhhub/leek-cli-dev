@@ -1,6 +1,6 @@
 {
   "name": "@leek-cli-dev/exec",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "> TODO: description",
   "author": "范义辉 <1131153523@qq.com>",
   "homepage": "https://github.com/fyhhub/leek-cli-dev#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/fyhhub/leek-cli-dev/issues"
   },
   "dependencies": {
-    "@leek-cli-dev/package": "file:../../models/package",
-    "@leek-cli-dev/log": "file:../../utils/log"
+    "@leek-cli-dev/log": "file:../../utils/log",
+    "@leek-cli-dev/package": "file:../../models/package"
   }
 }

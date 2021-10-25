@@ -1,6 +1,6 @@
 {
   "name": "@leek-cli-dev/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "core",
   "author": "范义辉 <1131153523@qq.com>",
   "homepage": "",
@@ -27,9 +27,9 @@
   "dependencies": {
     "@leek-cli-dev/exec": "file:../../core/exec",
     "@leek-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@leek-cli-dev/init": "file:../../commands/init",
     "@leek-cli-dev/log": "file:../../utils/log",
     "@leek-cli-dev/utils": "file:../../utils/utils",
-    "@leek-cli-dev/init": "file:../../commands/init",
     "colors": "^1.4.0",
     "commander": "^6.2.1",
     "dotenv": "^10.0.0",
