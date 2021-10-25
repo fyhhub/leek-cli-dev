@@ -28,9 +28,11 @@
   },
   "dependencies": {
     "@leek-cli-dev/format-path": "file:../../utils/format-path",
-    "@leek-cli-dev/utils": "file:../../utils/utils",
     "@leek-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@leek-cli-dev/utils": "file:../../utils/utils",
+    "fs-extra": "^10.0.0",
     "npminstall": "^4.10.0",
+    "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"
   }
 }

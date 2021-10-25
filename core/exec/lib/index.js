@@ -3,10 +3,10 @@ const log = require('@leek-cli-dev/log')
 const path = require('path')
 
 const SETTINGS = {
-  init: '@leek-cli-dev/core'
+  init: '@leek-cli-dev/init'
 }
 const CACHE_DIR = 'dependencies'
-function exec() {
+async function exec() {
   let targetPath = process.env.CLI_TARGET_PATH
   const homePath = process.env.CLI_HOME_PATH
   let storeDir = ''
@@ -29,10 +29,10 @@ function exec() {
       packageName,
       packageVersion
     })
-    if (pkg.exists()) {
-      
+    if (await pkg.exists()) {
+      await pkg.update()
     } else {
-      pkg.install()
+      await pkg.install()
     }
   } else {
     pkg = new Package({
@@ -43,7 +43,10 @@ function exec() {
   }
 
   const rootFile = pkg.getRootFilePath()
-  require(rootFile).apply(null, arguments)
+  console.log('%c 🍝 rootFile: ', 'font-size:20px;background-color: #FFDD4D;color:#fff;', rootFile);
+  if (rootFile) {
+    require(rootFile).apply(null, arguments)
+  }
 }
 
 module.exports = exec;

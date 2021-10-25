@@ -2,8 +2,10 @@ const { isObject } = require('@leek-cli-dev/utils')
 const formatPath = require('@leek-cli-dev/format-path')
 const pkgDir = require('pkg-dir')
 const path = require('path')
+const pathExists = require('path-exists').sync
 const npminstall = require('npminstall')
-const { getDefaultRegistry } = require('@leek-cli-dev/get-npm-info')
+const fse = require('fs-extra')
+const { getDefaultRegistry, getNpmLatestVerison } = require('@leek-cli-dev/get-npm-info')
 class Package {
   constructor(options) {
     if (!options) {
@@ -21,14 +23,38 @@ class Package {
     this.packageName = options.packageName
     // package版本
     this.packageVersion = options.version
+    this.cacheFilePathPrefix = this.packageName.replace('/', '_')
   }
 
-  exists() {
-
+  async prepare() {
+    if (this.storeDir && !pathExists(this.storeDir)) {
+      fse.mkdirpSync(this.storeDir);
+    }
+    if (this.packageVersion === 'latest') {
+      this.packageVersion = await getNpmLatestVerison(this.packageName)
+    }
   }
 
-  install() {
-    npminstall({
+  get cacheFilePath() {
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
+  }
+  getSpecificCacheFilePath(packageVersion) {
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`)
+  }
+
+  // 判断package是否存在
+  async exists() {
+    if (this.storeDir) {
+      await this.prepare()
+      return pathExists(this.cacheFilePath)
+    } else {
+      return pathExists(this.targetPath)
+    }
+  }
+
+  async install() {
+    await this.prepare()
+    return npminstall({
       root: this.targetPath,
       storeDir: this.storeDir,
       registry: getDefaultRegistry(),
@@ -41,23 +67,47 @@ class Package {
     })
   }
 
-  update() {
-
+  async update() {
+    await this.prepare()
+    // 1. 获取最新版本号
+    const latestPackageVersion = await getNpmLatestVerison(this.packageName)
+    // 2. 查询最新版本号对应的路径是否存在
+    const latestFilePath = this.getSpecificCacheFilePath(this.packageName)
+    if (!pathExists(latestFilePath)) {
+      return npminstall({
+        root: this.targetPath,
+        storeDir: this.storeDir,
+        registry: getDefaultRegistry(),
+        pkgs: [
+          {
+            name: this.packageName,
+            version: latestPackageVersion
+          }
+        ]
+      })
+    }
   }
   
   // 获取入口文件路径
   getRootFilePath() {
-    // 1. 获取package.json目录 - pkg-dir
-    const dir = pkgDir.sync(this.targetPath)
-    if (dir) {
-      // 2. 读取package.json 获取main 入口文件路径
-      const pkgFile = require(path.resolve(dir, 'package.json'))
-      if (pkgFile && pkgFile.main) {
-        // 3. mac window路径兼容
-        return formatPath(path.resolve(dir, pkgFile.main))
+    function _getRootFile(targetPath) {
+      // 1. 获取package.json目录 - pkg-dir
+      const dir = pkgDir.sync(targetPath)
+      if (dir) {
+        // 2. 读取package.json 获取main 入口文件路径
+        const pkgFile = require(path.resolve(dir, 'package.json'))
+        if (pkgFile && pkgFile.main) {
+          // 3. mac window路径兼容
+          return formatPath(path.resolve(dir, pkgFile.main))
+        }
       }
+      return null;
     }
-    return null;
+    if (this.storeDir) {
+      return _getRootFile(this.cacheFilePath)
+    } else {
+      return _getRootFile(this.targetPath)
+    }
   }
 }
 
