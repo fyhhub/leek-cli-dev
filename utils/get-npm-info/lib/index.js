@@ -1,7 +1,7 @@
 const axios = require('axios')
 const urlJoin = require('url-join')
 const semver = require('semver')
-function getDefaultRegistry(isOriginal = false) {
+function getDefaultRegistry(isOriginal = true) {
   return isOriginal ? 'https://registry.npmjs.org/' : 'https://registry.npm.taobao.org/'
 }
 function getNpmInfo(npmName, registry) {

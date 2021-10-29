@@ -9,7 +9,7 @@ const userHome = require('user-home')
 const pathExists = require('path-exists').sync
 const commander = require('commander')
 const { getNpmSemVersion } = require('@leek-cli-dev/get-npm-info')
-const { LOWEST_NODE_VERSION, DEFAULT_CLI_HOME } = require('./const')
+const { DEFAULT_CLI_HOME } = require('./const')
 let args;
 let config;
 const program = new commander.Command()
@@ -26,7 +26,6 @@ async function core() {
 }
 async function prepare() {
   checkPkgVersion()
-  checkNodeVersion()
   checkRoot()
   checkUserHome()
   checkEnv()
@@ -112,15 +111,6 @@ function createDefaultConfig() {
 
 function checkPkgVersion() {
   log.info('cli', pkg.version)
-}
-
-function checkNodeVersion() {
-  const currentVersion = process.version;
-  const lowestNodeVersion = LOWEST_NODE_VERSION;
-  // node版本检查
-  if (!semver.gte(currentVersion, lowestNodeVersion)) {
-    throw new Error(colors.red(`@leek-cli-dev 需要安装 v${lowestNodeVersion}以上版本`))
-  }
 }
 
 function checkRoot() {

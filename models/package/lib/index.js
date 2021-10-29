@@ -14,7 +14,6 @@ class Package {
     if (!isObject(options)) {
       throw new Error('Package初始化参数类型不正确！');
     }
-    console.log('package');
     // package路径
     this.targetPath = options.targetPath
     // package 缓存路径

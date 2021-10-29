@@ -1,8 +1,8 @@
 {
-  "name": "@leek-cli-dev/init",
+  "name": "@leek-cli-dev/command",
   "version": "1.0.3",
   "description": "> TODO: description",
-  "author": "范义辉 <1131153523@qq.com>",
+  "author": "范义辉 <fanyihui@tuhu.cn>",
   "homepage": "https://github.com/fyhhub/leek-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -27,10 +27,9 @@
     "url": "https://github.com/fyhhub/leek-cli-dev/issues"
   },
   "dependencies": {
-    "@leek-cli-dev/command": "file:../../models/command",
+    "colors": "^1.4.0",
+    "semver": "^7.3.5",
     "@leek-cli-dev/log": "file:../../utils/log",
-    "fs-extra": "^10.0.0",
-    "inquirer": "^8.2.0",
-    "semver": "^7.3.5"
+    "@leek-cli-dev/utils": "file:../../utils/utils"
   }
 }
